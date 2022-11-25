@@ -3,7 +3,10 @@ const app = express()
 const port = 3000 || process.env.PORT
 const request = require("request"); //requiring request module
 
-app.get("/:upiId", function (req, res) {
+app.get("/", function (req, res) {
+    res.send("hello from upi validator")
+});
+app.get("/upi/:upiId", function (req, res) {
     const { upiId } = req.params
     request.post(
         `https://upibankvalidator.com/api/upiValidation?upi=${upiId}`,
